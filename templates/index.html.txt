@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SmartTasker</title>
+    <style>
+        body { font-family: Arial; margin: 50px; }
+        input[type=text] { padding: 10px; width: 300px; }
+        input[type=submit] { padding: 10px; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>SmartTasker</h1>
+    <form method="POST" action="/add">
+        <input type="text" name="task" placeholder="Enter task..." required>
+        <input type="submit" value="Add Task">
+    </form>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }} <a href="{{ url_for('delete', task_id=loop.index0) }}">[Delete]</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
